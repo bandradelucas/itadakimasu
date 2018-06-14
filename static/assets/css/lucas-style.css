@@ -1,0 +1,48 @@
+.chart-wrapper .details-order{
+    text-align: center!important;
+    height: 50px!important;
+    font-size: 21px;
+    color: #f1f2f7;
+    font-weight: 700;
+}
+
+ol.breadcrumb.text-right .active .ti-plus {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #4ebd75;
+    color: white;
+    font-weight: 800;
+}
+ol.breadcrumb.text-right .active .ti-plus:hover{
+	opacity: 0.1;
+}
+.add-order {
+    bottom: 5%;
+    right: 3%;
+    position: fixed;
+    font-size: 28px;
+}
+.add-order a span{
+    background-color: #4ebd75;
+    padding: 10px;
+    color: white;
+    font-weight: 900;
+    border-radius: 50%;
+}
+.add-order a span:hover{
+	opacity: 0.8;
+}
+.form-check-inline.form-check label {
+    padding: 5px;
+}
+p.excluir-produto{
+    float: right;
+    margin-bottom: 5px!important;
+    color: red;
+    font-weight: 900;
+    font-size: 12px;
+    background-color: #f1f2f7;
+    width: 110px;
+    text-align: center;
+    border-radius: 50px;
+}
