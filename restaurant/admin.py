@@ -44,5 +44,6 @@ class OrderAdmin(admin.ModelAdmin):
         'updated_at',
         'active',
     )
+    filter_horizontal = ('product',)
 
 admin.site.register(Order, OrderAdmin)

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<div class="breadcrumbs">
+    <div class="col-sm-4 col-xs-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Produtos</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 col-xs-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li class="active"><a id="button-add" data-toggle="modal" data-target="#mediumModal" href=""><span class="ti-plus"></span></a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#"><div class="alert alert-dark" role="alert" style="float: right;right: 46px;">Importar Produtos</div></a>
+<div class="content mt-3">
+    <div class="col-sm-12">
+        {% for product in products %}
+        <div class="col-md-4 col-sm-12">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'assets/images/placeholder.png' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">{{ product.name }}</h4>
+                    <p class="card-text">{{ product.short_description }}</p>
+                    <a href=""><p class="excluir-produto">Remover</p></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="content mt-3">
+        <div class="add-order">
+            <a id="button-add" data-toggle="modal" data-target="#mediumModal" href=""><span class="ti-plus"></span></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -21,4 +21,5 @@ from restaurant import views as restaurant_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', restaurant_views.index, name='index'),
+    url(r'^produtos/$', restaurant_views.products, name='products'),
 ]
