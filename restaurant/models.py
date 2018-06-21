@@ -52,12 +52,15 @@ class Table(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Cadastrado Em')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Alterado Em')
     
+    class Meta:
+        verbose_name = 'Mesa'
+        verbose_name_plural = 'Mesas'
+    
     def __str__(self):
         return self.uid.encode('utf-8')
         
 class Order(models.Model):
     table = models.ForeignKey(Table, verbose_name='Mesa')
-    product = models.ManyToManyField(Product, verbose_name='Produto')
     finished = models.BooleanField(default=False, verbose_name=u'Finalizado')
     active = models.BooleanField(default=True, verbose_name=u'Ativo')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Cadastrado Em')
@@ -69,3 +72,13 @@ class Order(models.Model):
         
     def __str__(self):
         return '#' + str(self.id) + ': ' + self.table.uid
+        
+class OrderProduct(models.Model):
+    order = models.ForeignKey(Order, verbose_name='Pedido')
+    product = models.ForeignKey(Product, related_name='products', verbose_name='Produto')
+    quantity = models.IntegerField(verbose_name='Quantidade')
+    served = models.BooleanField(default=False, verbose_name=u'Atendido?')
+    
+    class Meta:
+        verbose_name = 'Produto de Pedido'
+        verbose_name_plural = 'Produtos de Pedido'

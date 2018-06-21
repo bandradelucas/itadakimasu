@@ -31,6 +31,7 @@
             -->
 
            <div class="col-md-12">
+               {% for order in orders %}
                 <div class="col-md-3">
                     <div class="card text-white bg-flat-color-1">
                         <div class="card-body pb-0">
@@ -46,13 +47,13 @@
                                 </div>
                             </div>
                             <h4 class="mb-0">
-                                <span>Pedido </span><span class="count">1</span>
+                                <span>Pedido #{{ order.id }}: {{ order.table }}</span>
                             </h4>
-                            <p class="text-light">Lucas - Mesa 01</p>
+                            <p class="text-light">{{ order.uid }}</p>
 
                             <div class="chart-wrapper px-0" style="height:70px;text-align: center;" height="70">
                                 <a class="details-order" href="#">
-                                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#smallmodal">
+                                    <button type="button" class="btn btn-secondary order-button" data-id="{{ order.id }}" data-toggle="modal" data-target="#table{{ order.id }}">
                                         <span>Detalhes do pedido</span>
                                     </button>
                                 </a>
@@ -60,93 +61,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card text-white bg-flat-color-2">
-                        <div class="card-body pb-0">
-                            <div class="dropdown float-right">
-                                <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                                    <i class="fa fa-cog"></i>
+                <div class="modal fade" id="table{{ order.id }}" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="smallmodalLabel">Pedido #{{ order.id }}: {{ order.table }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
                                 </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <div class="dropdown-menu-content">
-                                        <a class="dropdown-item" href="#">Atendido</a>
-                                        <a class="dropdown-item" href="#">Cancelar</a>
-                                    </div>
-                                </div>
                             </div>
-                            <h4 class="mb-0">
-                                <span>Pedido </span><span class="count">2</span>
-                            </h4>
-                            <p class="text-light">Lucas - Mesa 01</p>
-
-                            <div class="chart-wrapper px-0" style="height:70px;text-align: center;" height="70">
-                                <a class="details-order" href="#">
-                                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#smallmodal">
-                                        <span>Detalhes do pedido</span>
-                                    </button>
-                                </a>
+                            <div class="modal-body">
+                                <h4>{{ order.uid }}</h4>
+                                <h4>Produtos:</h4>
+                                <p>
+                                    <ul class="product-list">
+                                    </ul>
+                                </p>
+                                <h4>Observação:</h4>
+                                <p>
+                                    Não colocar gengibre, cliente alérgico.
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary">Atendido</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card text-white bg-flat-color-3">
-                        <div class="card-body pb-0">
-                            <div class="dropdown float-right">
-                                <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                                    <i class="fa fa-cog"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <div class="dropdown-menu-content">
-                                        <a class="dropdown-item" href="#">Atendido</a>
-                                        <a class="dropdown-item" href="#">Cancelar</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="mb-0">
-                                <span>Pedido </span><span class="count">3</span>
-                            </h4>
-                            <p class="text-light">Lucas - Mesa 01</p>
-
-                            <div class="chart-wrapper px-0" style="height:70px;text-align: center;" height="70">
-                                <a class="details-order" href="#">
-                                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#smallmodal">
-                                        <span>Detalhes do pedido</span>
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card text-white bg-flat-color-4">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Atendido</a>
-                                    <a class="dropdown-item" href="#">Cancelar</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span>Pedido </span><span class="count">4</span>
-                        </h4>
-                        <p class="text-light">Lucas - Mesa 01</p>
-
-                        <div class="chart-wrapper px-0" style="height:70px;text-align: center;" height="70">
-                            <a class="details-order" href="#">
-                                <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#smallmodal">
-                                    <span>Detalhes do pedido</span>
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                {% empty %}
+                    <p>Nenhum mesa encontrada.</p>
+                {% endfor %}
             </div>
-        </div> <!-- .content -->
+        </div>
         <div class="content mt-3">
             <div class="add-order">
                 <a id="button-add" data-toggle="modal" data-target="#mediumModal" href=""><span class="ti-plus"></span></a>

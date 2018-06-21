@@ -36,7 +36,12 @@ class InventoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Inventory, InventoryAdmin)
 
+class OrderProductInline(admin.StackedInline):
+    model = OrderProduct
+
 class OrderAdmin(admin.ModelAdmin):
+    inlines = [OrderProductInline,]
+    
     list_display = (
         'table',
         'finished',
@@ -44,6 +49,16 @@ class OrderAdmin(admin.ModelAdmin):
         'updated_at',
         'active',
     )
-    filter_horizontal = ('product',)
+    # filter_horizontal = ()
 
 admin.site.register(Order, OrderAdmin)
+
+class TableAdmin(admin.ModelAdmin):
+    list_display = (
+        'uid',
+        'created_at',
+        'updated_at',
+        'active',
+    )
+
+admin.site.register(Table, TableAdmin)

@@ -17,9 +17,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from restaurant import views as restaurant_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', restaurant_views.index, name='index'),
     url(r'^produtos/$', restaurant_views.products, name='products'),
-]
+    url(r'^ws/get_order_products/(?P<order_id>[0-9]+)/$', restaurant_views.ws_get_order_products, name='order_products'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
