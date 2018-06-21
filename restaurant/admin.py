@@ -1,7 +1,8 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 from .models import *
 
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     list_display = (
         'name',
         'cost',
@@ -15,7 +16,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 
-class ProductCategoryAdmin(admin.ModelAdmin):
+class ProductCategoryAdmin(ImportExportModelAdmin):
     list_display = (
         'parent',
         'name',
@@ -26,7 +27,7 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(ProductCategory, ProductCategoryAdmin)
 
-class InventoryAdmin(admin.ModelAdmin):
+class InventoryAdmin(ImportExportModelAdmin):
     list_display = (
         'product',
         'quantity',
@@ -39,7 +40,7 @@ admin.site.register(Inventory, InventoryAdmin)
 class OrderProductInline(admin.StackedInline):
     model = OrderProduct
 
-class OrderAdmin(admin.ModelAdmin):
+class OrderAdmin(ImportExportModelAdmin):
     inlines = [OrderProductInline,]
     
     list_display = (
@@ -53,7 +54,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(Order, OrderAdmin)
 
-class TableAdmin(admin.ModelAdmin):
+class TableAdmin(ImportExportModelAdmin):
     list_display = (
         'uid',
         'created_at',

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'restaurant',
+    'import_export',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -142,3 +143,5 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True

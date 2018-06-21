@@ -49,8 +49,10 @@
                             <h4 class="mb-0">
                                 <span>Pedido #{{ order.id }}: {{ order.table }}</span>
                             </h4>
+                            {% if order.obs %}
+                            <p style="color: #FFFFFF;">{{ order.obs }}</p>
+                            {% endif %}
                             <p class="text-light">{{ order.uid }}</p>
-
                             <div class="chart-wrapper px-0" style="height:70px;text-align: center;" height="70">
                                 <a class="details-order" href="#">
                                     <button type="button" class="btn btn-secondary order-button" data-id="{{ order.id }}" data-toggle="modal" data-target="#table{{ order.id }}">
@@ -76,10 +78,6 @@
                                 <p>
                                     <ul class="product-list">
                                     </ul>
-                                </p>
-                                <h4>Observação:</h4>
-                                <p>
-                                    Não colocar gengibre, cliente alérgico.
                                 </p>
                             </div>
                             <div class="modal-footer">
