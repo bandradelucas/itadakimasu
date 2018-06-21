@@ -61,6 +61,7 @@ class Table(models.Model):
         
 class Order(models.Model):
     table = models.ForeignKey(Table, verbose_name='Mesa')
+    obs = models.TextField(blank=True, null=True, verbose_name='Observação')
     finished = models.BooleanField(default=False, verbose_name=u'Finalizado')
     active = models.BooleanField(default=True, verbose_name=u'Ativo')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Cadastrado Em')
