@@ -65,8 +65,7 @@ class Order(models.Model):
         ("debit", "Débito"),
         ("credit", "Crébito"),
     )
-
-
+    
     table = models.ForeignKey(Table, verbose_name='Mesa')
     obs = models.TextField(blank=True, null=True, verbose_name='Observação')
     payment = models.CharField(max_length=50, choices=PAYMENT_CHOICES, blank=True, null=True, verbose_name='Pagamento')
