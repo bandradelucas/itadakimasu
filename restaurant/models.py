@@ -60,8 +60,16 @@ class Table(models.Model):
         return self.uid.encode('utf-8')
         
 class Order(models.Model):
+    PAYMENT_CHOICES = (
+        ("cash", "Dinheiro"),
+        ("debit", "Débito"),
+        ("credit", "Crébito"),
+    )
+
+
     table = models.ForeignKey(Table, verbose_name='Mesa')
     obs = models.TextField(blank=True, null=True, verbose_name='Observação')
+    payment = models.CharField(max_length=50, choices=PAYMENT_CHOICES, blank=True, null=True, verbose_name='Pagamento')
     finished = models.BooleanField(default=False, verbose_name=u'Finalizado')
     active = models.BooleanField(default=True, verbose_name=u'Ativo')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Cadastrado Em')
